@@ -308,7 +308,7 @@ export default function App() {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/Shahriar_Shahram_Resume.pdf"
                 className="resume-button inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition"
               >
                 Resume
