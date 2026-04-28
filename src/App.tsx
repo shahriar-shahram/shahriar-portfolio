@@ -252,8 +252,6 @@ export default function App() {
             </a>
 
             <div className="hidden items-center gap-6 text-sm text-[var(--muted)] md:flex">
-              <a href="#work" className="transition hover:text-[var(--text)]">Projects</a>
-              <a href="#skills" className="transition hover:text-[var(--text)]">Skills</a>
               <a href="#contact" className="transition hover:text-[var(--text)]">Contact</a>
             </div>
           </div>
