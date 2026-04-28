@@ -17,29 +17,32 @@ import VenomNetworkBackground from "./components/VenomNetworkBackground";
 
 const projects = [
   {
-    title: "SoccerTwos Tactics Copilot",
+    title: "SoccerTwos Policy Arena",
     tag: "RL + RAG",
-    text: "AI copilot for comparing safe, aggressive, and baseline SoccerTwos agents across matchups and evaluation scenarios.",
-    stack: ["React", "FastAPI", "Azure", "RAG"],
+    text: "Deployed multi-agent RL policy evaluation platform for Unity ML-Agents SoccerTwos, with side-balanced safe, aggressive, and baseline comparisons, replay analysis, and grounded Copilot answers.",
+    stack: ["React", "FastAPI", "Vercel", "Render", "RAG"],
     link: "https://github.com/shahriar-shahram/soccertwos-tactics-copilot",
+    liveLink: "https://soccer-tactics-copilot.vercel.app",
     icon: Brain,
     visual: "soccer",
   },
   {
     title: "DemandPilot",
     tag: "Forecasting",
-    text: "Retail demand forecasting pipeline with data cleaning, feature engineering, modeling, evaluation, and deployment direction.",
-    stack: ["Python", "Pandas", "ML", "Streamlit"],
+    text: "Client-ready retail demand forecasting dashboard with time-series feature engineering, model comparison, persisted inference, evaluation metrics, and an interactive Streamlit workflow.",
+    stack: ["Python", "Pandas", "Scikit-learn", "Streamlit", "Docker"],
     link: "https://github.com/shahriar-shahram/DemandPilot",
+    liveLink: "https://demandpilot-shahriar.streamlit.app",
     icon: BarChart3,
     visual: "forecast",
   },
   {
     title: "Fresh Retail AI Copilot",
     tag: "Retail AI",
-    text: "Large-scale retail analytics and AI copilot workflow for exploring operations, structure, and decision support opportunities.",
-    stack: ["Parquet", "Cloud", "Analytics", "AI"],
+    text: "Deployed stockout-aware retail demand intelligence system using latent demand recovery, corrected-demand forecasting, lost-sales estimation, and business-facing inventory analysis.",
+    stack: ["Python", "FastAPI", "Docker", "Google Cloud Run", "Retail ML"],
     link: "https://github.com/shahriar-shahram/fresh-retail-copilot",
+    liveLink: "https://fresh-retail-copilot-frontend-837696130499.us-central1.run.app",
     icon: Store,
     visual: "retail",
   },
@@ -337,16 +340,13 @@ export default function App() {
               const Icon = p.icon;
               return (
                 <Reveal key={p.title} delay={index * 0.08}>
-                  <motion.a
-                    href={p.link}
-                    target="_blank"
-                    rel="noreferrer"
+                  <motion.div
                     whileHover={{ y: -8 }}
-                    className="card-shine liquid-border glass-panel group block rounded-[1.8rem] p-4 soft-shadow transition hover:bg-white/[0.08] hover:glow-shadow"
+                    className="card-shine liquid-border glass-panel group flex h-full flex-col rounded-[1.8rem] p-4 soft-shadow transition hover:bg-white/[0.08] hover:glow-shadow"
                   >
                     <ProjectVisual type={p.visual} />
 
-                    <div className="p-2 pt-5">
+                    <div className="flex flex-1 flex-col p-2 pt-5">
                       <div className="mb-4 flex items-start justify-between">
                         <div className="rounded-2xl bg-sky-400/10 p-3 text-sky-300">
                           <Icon className="h-6 w-6" />
@@ -356,7 +356,7 @@ export default function App() {
 
                       <p className="text-sm font-medium text-sky-300">{p.tag}</p>
                       <h3 className="mt-2 text-xl font-semibold text-[var(--text)]">{p.title}</h3>
-                      <p className="mt-3 min-h-[84px] text-sm leading-6 text-[var(--muted-2)]">
+                      <p className="mt-3 min-h-[108px] text-sm leading-6 text-[var(--muted-2)]">
                         {p.text}
                       </p>
 
@@ -365,8 +365,32 @@ export default function App() {
                           <Chip key={item}>{item}</Chip>
                         ))}
                       </div>
+
+                      <div className="mt-6 flex flex-wrap gap-3">
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="secondary-button inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition"
+                        >
+                          GitHub
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+
+                        {"liveLink" in p && p.liveLink ? (
+                          <a
+                            href={p.liveLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-button inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition"
+                          >
+                            Live App
+                            <ArrowUpRight className="h-3.5 w-3.5" />
+                          </a>
+                        ) : null}
+                      </div>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 </Reveal>
               );
             })}
