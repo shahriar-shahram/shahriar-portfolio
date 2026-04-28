@@ -1,0 +1,4 @@
+Resume placeholder.
+
+Later, replace this with:
+public/resume.pdf
